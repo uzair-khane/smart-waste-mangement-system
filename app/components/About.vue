@@ -5,7 +5,7 @@
    
 
       <!-- Text Content -->
-      <div class="lg:w-1/2 py-20 text-center lg:text-left">
+      <div class="lg:w-1/2 px-8 py-20 text-center lg:text-left">
         <h2 class="text-3xl sm:text-4xl font-bold mb-6">About Us</h2>
         <p class="text-lg mb-4">
           The Smart Waste Management System is a modern web-based platform designed to help citizens report and track waste or cleanliness problems in their city.
@@ -22,7 +22,7 @@
         <img
           src="/images/about.png"
           alt="About Smart Waste Management"
-          class="w-full h-full "
+          class="w-full h-full rounded-sm "
         />
       </div>
     </div>
