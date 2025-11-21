@@ -1,14 +1,14 @@
 <template>
-  <header class="text-white fixed w-full z-20 shadow-lg">
+  <header class=" bg-amber-50 text-slate-700 fixed w-full z-20 shadow-lg">
     <div
-      class="max-w-7xl mx-auto flex justify-between items-center  py-3 md:py-4"
+      class="max-w-7xl mx-auto flex justify-between items-center  py-1 md:py-1"
     >
       <!-- Logo / Title -->
       <NuxtLink to="/" class="flex items-center space-x-3">
         <img
           src="/images/logo.png"
           alt="Smart Waste Logo"
-          class="h-16 w-16 object-contain"
+          class="h-24 w-24 object-contain"
         />
       </NuxtLink>
 
@@ -45,33 +45,33 @@
       >
         <NuxtLink
           to="/"
-          class="block px-2 py-2 text-[20px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
+          class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
           >Home</NuxtLink
         >
         <NuxtLink
           to="/register"
-          class="block px-2 py-2 text-[20px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
+          class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
           >Register</NuxtLink
         >
         <NuxtLink
           to="/login"
-          class="block px-2 py-2 md:py-0 text-[20px] hover:text-green-300 md:hover:transition-all duration-300"
+          class="block px-2 py-2 md:py-0 text-[18px] hover:text-green-300 md:hover:transition-all duration-300"
           >Login</NuxtLink
         >
         <NuxtLink
           to="/report-issue"
-          class="block px-2 py-2 text-[20px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
+          class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
           >Report Issue</NuxtLink
         >
         <NuxtLink
           to="/my-complaints"
-          class="block px-2 py-2 text-[20px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
+          class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
           >My Complaints</NuxtLink
         >
        
         <NuxtLink
           to="/contact"
-          class="block px-2 text-[20px] py-2 md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
+          class="block px-2 text-[18px] py-2 md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
           >Contact Us</NuxtLink
         >
       </nav>

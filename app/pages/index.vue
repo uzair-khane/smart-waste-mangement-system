@@ -29,6 +29,8 @@
   </div>
   <Welcome />
   <About />
+  <Vidios />
+  <ImageGallary />
 </template>
 
 <script setup>
