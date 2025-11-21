@@ -1,28 +1,58 @@
 <template>
-  <div class="flex justify-center mx-20 mb-14">
+  <div class="flex justify-center mx-4 sm:mx-10 md:mx-20 mb-14 h-auto">
     <Swiper
       :modules="modules"
-      :slides-per-view="3"
-      :space-between="30"
+      :slides-per-view="1"
+      :space-between="20"
+      :breakpoints="breakpoints"
       navigation
       :pagination="{ clickable: true }"
       :scrollbar="{ draggable: true }"
-      class="w-full mt-28"
-      @swiper="onSwiper"
-      @slide-change="onSlideChange"
+      :autoplay="{ delay: 3000, disableOnInteraction: false }"
+      loop
+      class="w-full mt-12"
     >
       <!-- Video Slides -->
-      <SwiperSlide
-        v-for="(video, index) in videos"
-        :key="index"
-        class="relative"
-      >
+      <SwiperSlide class="relative">
         <video
-          :ref="el => videoRefs[index] = el"
-          class="w-full h-64 object-cover rounded-xl"
-          :src="video.src"
+          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-xl"
+          src="/images/vidio.mp4"
           muted
           loop
+          autoplay
+          playsinline
+        ></video>
+      </SwiperSlide>
+
+      <SwiperSlide class="relative">
+        <video
+          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-xl"
+          src="/images/vidio2.mp4"
+          muted
+          loop
+          autoplay
+          playsinline
+        ></video>
+      </SwiperSlide>
+
+      <SwiperSlide class="relative">
+        <video
+          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-xl"
+          src="/images/vidio3.mp4"
+          muted
+          loop
+          autoplay
+          playsinline
+        ></video>
+      </SwiperSlide>
+
+      <SwiperSlide class="relative">
+        <video
+          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-xl"
+          src="/images/vidio4.mp4"
+          muted
+          loop
+          autoplay
           playsinline
         ></video>
       </SwiperSlide>
@@ -31,9 +61,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules'
 
 // Swiper CSS
 import 'swiper/css'
@@ -42,52 +71,20 @@ import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 
 // Swiper modules
-const modules = [Navigation, Pagination, Scrollbar, A11y]
+const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay]
 
-// Video data
-const videos = [
-  { src: '/images/vidio.mp4' },
-  { src: '/images/vidio.mp4' },
-  { src: '/images/vidio.mp4' },
-  { src: '/images/vidio.mp4' },
-]
-
-// Refs for all video elements
-const videoRefs = []
-
-// Track active slide
-const activeIndex = ref(0)
-
-// Function to play the active video and pause others
-const playActiveVideo = () => {
-  videoRefs.forEach((v, idx) => {
-    if (!v) return
-    if (idx === activeIndex.value) {
-      v.play().catch(() => {}) // fallback for autoplay restrictions
-    } else {
-      v.pause()
-    }
-  })
+// Breakpoints for responsive slides
+const breakpoints = {
+  640: { slidesPerView: 1, spaceBetween: 20 }, // Mobile
+  768: { slidesPerView: 2, spaceBetween: 25 }, // Tablet
+  1024: { slidesPerView: 3, spaceBetween: 30 }, // Desktop
+  1280: { slidesPerView: 3, spaceBetween: 30 }  // Large Desktop
 }
-
-// Swiper initialized
-const onSwiper = (swiper) => {
-  console.log('Swiper initialized', swiper)
-  // Play the initial visible slides (centered)
-  activeIndex.value = swiper.activeIndex
-  playActiveVideo()
-}
-
-// Slide change
-const onSlideChange = (swiper) => {
-  activeIndex.value = swiper.activeIndex
-  playActiveVideo()
-}
-
-// Play the initial slide video on component mount
-onMounted(() => {
-  nextTick(() => {
-    playActiveVideo()
-  })
-})
 </script>
+
+<style>
+.swiper-scrollbar {
+  bottom: 0 !important;
+  top: auto;
+}
+</style>

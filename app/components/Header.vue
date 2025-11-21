@@ -1,5 +1,5 @@
 <template>
-  <header class=" bg-amber-50 text-slate-700 fixed w-full z-20 shadow-lg">
+  <header class=" px-4 bg-amber-50 text-slate-700 fixed w-full z-20 shadow-lg">
     <div
       class="max-w-7xl mx-auto flex justify-between items-center  py-1 md:py-1"
     >
@@ -16,7 +16,7 @@
       <button @click="isOpen = !isOpen" class="md:hidden focus:outline-none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
+          class="h-10 w-10"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
