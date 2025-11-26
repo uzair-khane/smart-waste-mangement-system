@@ -1,5 +1,5 @@
 <template>
-  <section class="  bg-green-600 text-white">
+  <section class="  bg-green-400 text-white">
     <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
 
    

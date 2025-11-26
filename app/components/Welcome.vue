@@ -17,7 +17,7 @@
       </div>
       <!-- Text Content -->
       <div class="lg:w-1/2 text-center lg:text-left">
-        <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+        <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-green-300">
           Welcome to Smart Waste Management System
         </h2>
         <p class="text-lg sm:text-xl mb-6">

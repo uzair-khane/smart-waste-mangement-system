@@ -1,5 +1,5 @@
 <template>
-  <header class=" px-4 bg-amber-50 text-slate-700 fixed w-full z-20 shadow-lg">
+  <header class=" px-4 bg-gray-50 text-slate-700 fixed w-full z-20 shadow-lg">
     <div
       class="max-w-7xl mx-auto flex justify-between items-center  py-1 md:py-1"
     >
@@ -11,6 +11,7 @@
           class="h-24 w-24 object-contain"
         />
       </NuxtLink>
+ 
 
       <!-- Hamburger Menu for Mobile -->
       <button @click="isOpen = !isOpen" class="md:hidden focus:outline-none">

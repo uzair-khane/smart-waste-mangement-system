@@ -33,6 +33,9 @@
   <Vidios />
   <ImageGallary />
   <Together />
+  <ContactUs />
+  <Asked />
+  <Footer />
 </template>
 
 <script setup>
