@@ -1,5 +1,5 @@
 <template>
-  <header class=" px-4 bg-gray-50 text-slate-700 fixed w-full z-20 shadow-lg">
+  <header class=" px-4 bg-gray-100 text-slate-700 fixed w-full z-20 shadow-lg">
     <div
       class="max-w-7xl mx-auto flex justify-between items-center  py-1 md:py-1"
     >
@@ -49,16 +49,7 @@
           class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
           >Home</NuxtLink
         >
-        <NuxtLink
-          to="/register"
-          class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
-          >Register</NuxtLink
-        >
-        <NuxtLink
-          to="/login"
-          class="block px-2 py-2 md:py-0 text-[18px] hover:text-green-300 md:hover:transition-all duration-300"
-          >Login</NuxtLink
-        >
+      
         <NuxtLink
           to="/report-issue"
           class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
@@ -75,7 +66,11 @@
           class="block px-2 text-[18px] py-2 md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
           >Contact Us</NuxtLink
         >
+        
       </nav>
+      <nuxt-link to="/profile">
+          <button class="bg-green-500 text-md hover:bg-green-600 py-3 px-7 hover:cursor-pointer ml-8 text-white font-semibold rounded-md ">Profile</button>
+        </nuxt-link>
     </div>
   </header>
 </template>
