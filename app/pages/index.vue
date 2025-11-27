@@ -19,7 +19,7 @@
         Easily report waste or cleanliness problems in your city. Track your complaints and help create a cleaner, healthier environment.
       </p>
       <NuxtLink
-        to="/report-issue"
+        to="/report"
         class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-md text-sm sm:text-lg transition-all"
       >
         Report Issue

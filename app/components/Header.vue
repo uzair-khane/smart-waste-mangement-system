@@ -51,12 +51,12 @@
         >
       
         <NuxtLink
-          to="/report-issue"
+          to="/report"
           class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
           >Report Issue</NuxtLink
         >
         <NuxtLink
-          to="/my-complaints"
+          to="/complaint"
           class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
           >My Complaints</NuxtLink
         >
