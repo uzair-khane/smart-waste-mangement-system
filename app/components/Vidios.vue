@@ -15,7 +15,7 @@
       <!-- Video Slides -->
       <SwiperSlide class="relative">
         <video
-          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-xl"
+          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-sm"
           src="/images/vidio.mp4"
           muted
           loop
@@ -26,7 +26,7 @@
 
       <SwiperSlide class="relative">
         <video
-          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-xl"
+          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-sm"
           src="/images/vidio2.mp4"
           muted
           loop
@@ -37,7 +37,7 @@
 
       <SwiperSlide class="relative">
         <video
-          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-xl"
+          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-sm"
           src="/images/vidio3.mp4"
           muted
           loop
@@ -48,7 +48,7 @@
 
       <SwiperSlide class="relative">
         <video
-          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-xl"
+          class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-sm "
           src="/images/vidio4.mp4"
           muted
           loop

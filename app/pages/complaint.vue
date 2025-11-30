@@ -12,7 +12,7 @@
 
         <nuxt-link to="/report">
           <button
-            class="mt-3 md:mt-0 bg-green-500 hover:bg-green-600 px-5 py-2 text-white font-semibold rounded-lg shadow-md transition transform hover:scale-105 flex items-center gap-2"
+            class="mt-3 md:mt-0 bg-green-500 hover:bg-green-600 px-5 py-2 text-white font-semibold rounded-lg shadow-md hover:cursor-pointer transition transform hover:scale-105 flex items-center gap-2"
           >
             <Icon name="uil:plus" /> New Report
           </button>
@@ -33,12 +33,12 @@
 
           <div class="flex gap-3 mt-2 md:mt-0">
             <button
-              class="border py-1 px-3 border-slate-300 rounded-lg hover:bg-slate-800 hover:text-white transition shadow-sm"
+              class="border py-1 px-3 border-slate-300 rounded-lg hover:cursor-pointer hover:bg-slate-800 hover:text-white transition shadow-sm"
             >
               <Icon name="uil:filter" /> Status
             </button>
             <button
-              class="border py-1 px-3 border-slate-300 rounded-lg hover:bg-slate-800 hover:text-white transition shadow-sm"
+              class="border py-1 px-3 border-slate-300 rounded-lg hover:cursor-pointer hover:bg-slate-800 hover:text-white transition shadow-sm"
             >
               <Icon name="uil:sort" />  Sort
             </button>
