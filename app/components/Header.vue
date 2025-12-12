@@ -1,82 +1,93 @@
 <template>
-  <header class=" px-4 bg-gray-100 text-slate-700 fixed w-full z-20 shadow-lg">
+  <header
+    class="fixed w-full z-50 backdrop-blur-xl bg-white/70 shadow-lg border-b border-white/30 transition-all duration-300"
+  >
     <div
-      class="max-w-7xl mx-auto flex justify-between items-center  py-1 md:py-1"
+      class="max-w-7xl mx-auto flex justify-between items-center py-3 px-4 md:px-6"
     >
-      <!-- Logo / Title -->
-      <NuxtLink to="/" class="flex items-center space-x-3">
+      <!-- Logo -->
+      <NuxtLink to="/" class="flex items-center space-x-3 group">
         <img
           src="/images/logo.png"
           alt="Smart Waste Logo"
-          class="h-24 w-24 object-contain"
+          class="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-110"
         />
       </NuxtLink>
- 
 
-      <!-- Hamburger Menu for Mobile -->
-      <button @click="isOpen = !isOpen" class="md:hidden focus:outline-none">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-10 w-10"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            v-if="!isOpen"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-          <path
-            v-else
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
+      <!-- Mobile Hamburger -->
+      <button
+        @click="isOpen = !isOpen"
+        class="md:hidden focus:outline-none transition-transform duration-300"
+      >
+        <Icon
+          v-if="!isOpen"
+          name="material-symbols:menu-rounded"
+          class="text-4xl text-green-700"
+        />
+        <Icon
+          v-else
+          name="material-symbols:close-rounded"
+          class="text-4xl text-green-700"
+        />
       </button>
 
-      <!-- Navigation Links -->
+      <!-- Navigation -->
       <nav
-        :class="{ block: isOpen, hidden: !isOpen }"
-        class="absolute md:static top-full left- w-full md:w-auto bg-green-600 md:bg-transparent md:flex md:space-x-3 md:items-end"
+        class="absolute md:static left-0 top-full w-full md:w-auto bg-white/90 md:bg-transparent overflow-hidden md:overflow-visible shadow-md md:shadow-none transition-all duration-500 ease-in-out"
+        :class="isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 md:opacity-100 md:max-h-full'"
       >
-        <NuxtLink
-          to="/"
-          class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
-          >Home</NuxtLink
-        >
-      
-        <NuxtLink
-          to="/report"
-          class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
-          >Report Issue</NuxtLink
-        >
-        <NuxtLink
-          to="/complaint"
-          class="block px-2 py-2 text-[18px] md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
-          >My Complaints</NuxtLink
-        >
-       
-        <NuxtLink
-          to="/contact"
-          class="block px-2 text-[18px] py-2 md:py-0 hover:text-green-300 md:hover: transition-all duration-300"
-          >Contact Us</NuxtLink
-        >
-        
+        <div class="flex flex-col md:flex-row md:items-center text-center">
+          <NuxtLink
+            to="/"
+            class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+          >
+            Home
+          </NuxtLink>
+
+          <NuxtLink
+            to="/chatBot"
+            class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+          >
+            Chatbot
+          </NuxtLink>
+
+          <NuxtLink
+            to="/report"
+            class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+          >
+            Report Issue
+          </NuxtLink>
+
+          <NuxtLink
+            to="/complaint"
+            class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+          >
+            My Complaints
+          </NuxtLink>
+
+          <NuxtLink
+            to="/contact"
+            class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+          >
+            Contact Us
+          </NuxtLink>
+        </div>
       </nav>
-      <nuxt-link to="/profile">
-          <button class="bg-green-500 text-md hover:bg-green-600 py-3 px-7 hover:cursor-pointer ml-8 text-white font-semibold rounded-md ">Profile</button>
-        </nuxt-link>
+
+      <!-- Profile Icon -->
+      <NuxtLink to="/profile" class="hidden md:block">
+        <Icon
+          name="uil:user"
+          class="text-2xl text-green-700 hover:text-green-500 hover:scale-110 transition-all duration-300 cursor-pointer"
+        />
+      </NuxtLink>
     </div>
   </header>
 </template>
 
 <script setup>
 import { ref } from "vue";
+
 const isOpen = ref(false);
 </script>
 
