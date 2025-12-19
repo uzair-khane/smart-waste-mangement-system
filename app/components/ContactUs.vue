@@ -114,8 +114,10 @@
             Reset
           </button>
         </div>
+ 
       </form>
     </div>
+    
   </section>
 </template>
 
@@ -131,8 +133,9 @@ const form = reactive({
 });
 
 const locLoading = ref(false);
+const  locError = null
 
-function getLocation() {
+ async function getLocation() {
   if (!navigator.geolocation) {
     alert("Your browser does not support GPS.");
     return;
@@ -141,11 +144,20 @@ function getLocation() {
   locLoading.value = true;
 
   navigator.geolocation.getCurrentPosition(
-    (pos) => {
+    async (pos) => {
       const { latitude, longitude } = pos.coords;
 
-      form.location = `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
-      locLoading.value = false;
+      try{
+        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+        const response = await res.json()
+        console.log("this is api",response)
+        form.location = response.display_name;
+         locLoading.value = false;
+      }
+      catch(error){
+    console.log(error)
+    form.location = `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
+      }
     },
     (err) => {
       alert("Unable to access your location. Please allow GPS.");
