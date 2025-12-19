@@ -28,13 +28,25 @@
         <!-- Location Address -->
         <div>
           <label class="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Location Address</label>
-          <input
-            v-model="locationAddress"
-            type="text"
-            placeholder="Fetching current location..."
-            class="w-full rounded-md border border-gray-300 px-3 sm:px-4 py-2 sm:py-2.5 bg-gray-100 text-gray-600 text-sm sm:text-base"
-            readonly
-          />
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+            <input
+              v-model="locationAddress"
+              type="text"
+              placeholder="Fetching current location..."
+              class="w-full rounded-md border border-gray-300 px-3 sm:px-4 py-2 sm:py-2.5 bg-gray-100 text-gray-600 text-sm sm:text-base"
+              readonly
+            />
+            <!-- Retry Button if Permission Denied -->
+            <button
+              v-if="locationError"
+              type="button"
+              @click="getLocation"
+              class="mt-2 sm:mt-0 px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-500 text-white rounded-md text-sm sm:text-base hover:bg-blue-600"
+            >
+              Retry Location
+            </button>
+          </div>
+          <p v-if="locationError" class="text-red-500 text-sm mt-1">{{ locationError }}</p>
         </div>
 
         <!-- Describe the Issue -->
@@ -100,9 +112,11 @@ const locationAddress = ref('')
 const issueDescription = ref('')
 const attachedFile = ref(null)
 const imagePreview = ref(null)
+const locationError = ref(null)
 
-// Fetch user's current location (mobile + desktop)
-onMounted(() => {
+// Function to get location (mobile + desktop)
+const getLocation = () => {
+  locationError.value = null
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       async (position) => {
@@ -119,24 +133,30 @@ onMounted(() => {
       (error) => {
         switch(error.code){
           case 1:
-            locationAddress.value = 'Permission denied for location'
+            locationError.value = 'Permission denied. Please allow location access.'
             break;
           case 2:
-            locationAddress.value = 'Position unavailable'
+            locationError.value = 'Position unavailable.'
             break;
           case 3:
-            locationAddress.value = 'Location request timed out'
+            locationError.value = 'Location request timed out.'
             break;
           default:
-            locationAddress.value = 'Unable to fetch location'
+            locationError.value = 'Unable to fetch location.'
         }
+        locationAddress.value = ''
         console.error(error)
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     )
   } else {
-    locationAddress.value = 'Geolocation not supported'
+    locationError.value = 'Geolocation not supported.'
   }
+}
+
+// Fetch location on mount
+onMounted(() => {
+  getLocation()
 })
 
 const handleFileUpload = (event) => {
@@ -162,9 +182,11 @@ const submitReport = () => {
   issueDescription.value = ''
   attachedFile.value = null
   imagePreview.value = null
+  locationAddress.value = ''
+  locationError.value = null
 }
 </script>
 
 <style scoped>
-/* Optional: hover effects or minor mobile tweaks */
+
 </style>
