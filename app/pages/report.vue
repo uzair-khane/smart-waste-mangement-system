@@ -49,16 +49,29 @@
           ></textarea>
         </div>
 
-        <!-- Attach Photo -->
+        <!-- Attach Photo / Take Photo -->
         <div class="border border-dashed border-gray-300 rounded-md p-4 flex flex-col items-center justify-center text-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v4h16v-4M12 12v8m0 0l-3-3m3 3l3-3M12 12V4" />
           </svg>
           <p class="text-gray-500 text-sm mb-2">Attach a Photo (Optional)</p>
-          <input type="file" @change="handleFileUpload" class="hidden" ref="fileInput" accept="image/*" />
-          <button type="button" @click="$refs.fileInput.click()" class="px-3 sm:px-4 py-1.5 sm:py-2 bg-green-200 text-green-800 rounded-md text-sm sm:text-base hover:bg-green-300 mb-2">
-            Browse files
-          </button>
+
+          <!-- Hidden File Input for Upload & Camera -->
+          <input 
+            type="file" 
+            @change="handleFileUpload" 
+            class="hidden" 
+            ref="fileInput" 
+            accept="image/*" 
+            capture="environment" 
+          />
+
+          <!-- Buttons -->
+          <div class="flex flex-col sm:flex-row gap-2">
+            <button type="button" @click="$refs.fileInput.click()" class="px-3 sm:px-4 py-1.5 sm:py-2 bg-green-200 text-green-800 rounded-md text-sm sm:text-base hover:bg-green-300">
+              Take Photo / Upload
+            </button>
+          </div>
 
           <!-- Image Preview -->
           <div v-if="imagePreview" class="mt-2 w-full sm:w-[300px] h-[300px] object-cover overflow-hidden rounded-md border border-gray-200">
@@ -88,7 +101,7 @@ const issueDescription = ref('')
 const attachedFile = ref(null)
 const imagePreview = ref(null)
 
-// Fetch user's current location (mobile + desktop friendly)
+// Fetch user's current location (mobile + desktop)
 onMounted(() => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -153,5 +166,5 @@ const submitReport = () => {
 </script>
 
 <style scoped>
-/* Optional: hover effects or mobile tweaks */
+/* Optional: hover effects or minor mobile tweaks */
 </style>
