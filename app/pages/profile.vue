@@ -26,15 +26,15 @@
         </NuxtLink>
 
         <NuxtLink
-          to="/profile/security"
+          to="/"
           class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100"
         >
           <Icon name="uil:lock" />
-          Security
+          Home
         </NuxtLink>
 
         <NuxtLink
-          to="/profile/reports"
+          to="/complaint"
           class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100"
         >
           <Icon name="uil:line" />
