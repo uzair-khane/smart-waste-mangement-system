@@ -1,5 +1,6 @@
 <template>
   <Header />
+
   <div class="min-h-screen pt-24 sm:pt-32 flex items-center justify-center px-4 sm:px-6 lg:px-28">
     <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 md:p-10 w-full max-w-3xl">
 
@@ -87,23 +88,39 @@ const issueDescription = ref('')
 const attachedFile = ref(null)
 const imagePreview = ref(null)
 
-// Fetch user's current location
+// Fetch user's current location (mobile + desktop friendly)
 onMounted(() => {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const { latitude, longitude } = position.coords
-      try {
-        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
-        const data = await res.json()
-        locationAddress.value = data.display_name || `${latitude}, ${longitude}`
-      } catch (error) {
-        locationAddress.value = `${latitude}, ${longitude}`
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords
+        try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+          const data = await res.json()
+          locationAddress.value = data.display_name || `${latitude}, ${longitude}`
+        } catch (error) {
+          locationAddress.value = `${latitude}, ${longitude}`
+          console.error(error)
+        }
+      },
+      (error) => {
+        switch(error.code){
+          case 1:
+            locationAddress.value = 'Permission denied for location'
+            break;
+          case 2:
+            locationAddress.value = 'Position unavailable'
+            break;
+          case 3:
+            locationAddress.value = 'Location request timed out'
+            break;
+          default:
+            locationAddress.value = 'Unable to fetch location'
+        }
         console.error(error)
-      }
-    }, (error) => {
-      locationAddress.value = 'Unable to fetch location'
-      console.error(error)
-    })
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    )
   } else {
     locationAddress.value = 'Geolocation not supported'
   }
@@ -126,6 +143,7 @@ const submitReport = () => {
     file: attachedFile.value
   })
   alert('Report submitted successfully!')
+
   // Reset form
   fullName.value = ''
   issueDescription.value = ''
@@ -135,5 +153,5 @@ const submitReport = () => {
 </script>
 
 <style scoped>
-
+/* Optional: hover effects or mobile tweaks */
 </style>
