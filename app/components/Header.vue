@@ -17,17 +17,17 @@
       <!-- Mobile Hamburger -->
       <button
         @click="isOpen = !isOpen"
-        class="md:hidden focus:outline-none transition-transform duration-300"
+        class="md:hidden hover:cursor-pointer focus:outline-none transition-transform duration-300"
       >
         <Icon
           v-if="!isOpen"
           name="material-symbols:menu-rounded"
-          class="text-4xl text-green-700"
+          class="text-4xl hover:cursor-pointer text-green-700"
         />
         <Icon
           v-else
           name="material-symbols:close-rounded"
-          class="text-4xl text-green-700"
+          class="text-4xl hover:cursor-pointer text-green-700"
         />
       </button>
 
@@ -71,11 +71,22 @@
           >
             Contact Us
           </NuxtLink>
+
+          <!-- Profile link inside mobile menu -->
+          <NuxtLink
+            to="/profile"
+            class="block px-4 py-3 text-lg md:hidden font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+          >
+            Profile
+          </NuxtLink>
         </div>
       </nav>
 
-      <!-- Profile Icon -->
-      <NuxtLink to="/profile" class="hidden md:block">
+      <!-- Desktop Profile Icon -->
+      <NuxtLink
+        to="/profile"
+        class="hidden md:block ml-4"
+      >
         <Icon
           name="uil:user"
           class="text-2xl text-green-700 hover:text-green-500 hover:scale-110 transition-all duration-300 cursor-pointer"

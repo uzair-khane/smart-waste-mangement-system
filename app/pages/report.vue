@@ -68,20 +68,30 @@
           </svg>
           <p class="text-gray-500 text-sm mb-2">Attach a Photo (Optional)</p>
 
-          <!-- Hidden File Input for Upload & Camera -->
+          <!-- Hidden File Inputs -->
           <input 
             type="file" 
-            @change="handleFileUpload" 
-            class="hidden" 
-            ref="fileInput" 
+            ref="cameraInput" 
             accept="image/*" 
             capture="environment" 
+            class="hidden"
+            @change="handleFileUpload"
+          />
+          <input 
+            type="file" 
+            ref="galleryInput" 
+            accept="image/*" 
+            class="hidden"
+            @change="handleFileUpload"
           />
 
           <!-- Buttons -->
           <div class="flex flex-col sm:flex-row gap-2">
-            <button type="button" @click="$refs.fileInput.click()" class="px-3 sm:px-4 py-1.5 sm:py-2 bg-green-200 text-green-800 rounded-md text-sm sm:text-base hover:bg-green-300">
-              Take Photo / Upload
+            <button type="button" @click="$refs.cameraInput.click()" class="px-3 sm:px-4 py-1.5 sm:py-2 bg-green-200 text-green-800 rounded-md text-sm sm:text-base hover:bg-green-300">
+              Take Photo
+            </button>
+            <button type="button" @click="$refs.galleryInput.click()" class="px-3 sm:px-4 py-1.5 sm:py-2 bg-yellow-200 text-yellow-800 rounded-md text-sm sm:text-base hover:bg-yellow-300">
+              Upload from Gallery
             </button>
           </div>
 
@@ -114,7 +124,7 @@ const attachedFile = ref(null)
 const imagePreview = ref(null)
 const locationError = ref(null)
 
-// Function to get location (mobile + desktop)
+// Get user's current location (mobile + desktop)
 const getLocation = () => {
   locationError.value = null
   if (navigator.geolocation) {
@@ -159,6 +169,7 @@ onMounted(() => {
   getLocation()
 })
 
+// Handle photo selection
 const handleFileUpload = (event) => {
   attachedFile.value = event.target.files[0]
   if (attachedFile.value) {
