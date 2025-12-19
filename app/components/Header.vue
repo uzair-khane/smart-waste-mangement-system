@@ -66,7 +66,7 @@
           </NuxtLink>
 
           <NuxtLink
-            to="/contact"
+            to="/contactUs"
             class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
           >
             Contact Us

@@ -1,5 +1,9 @@
 <template>
+   <div>
+      <Header />
+    </div>
   <div class="bg-gray-100 min-h-screen p-4 md:p-8">
+   
     <div class="max-w-7xl mx-auto">
       <!-- Header Section -->
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
@@ -10,13 +14,7 @@
           </p>
         </div>
 
-        <nuxt-link to="/report">
-          <button
-            class="mt-3 md:mt-0 bg-green-500 hover:bg-green-600 px-5 py-2 text-white font-semibold rounded-lg shadow-md hover:cursor-pointer transition transform hover:scale-105 flex items-center gap-2"
-          >
-            <Icon name="uil:plus" /> New Report
-          </button>
-        </nuxt-link>
+       
       </div>
 
       <!-- Search & Filter Section -->
@@ -88,6 +86,15 @@
         </table>
       </div>
     </div>
+     <div class="flex justify-end">
+      <nuxt-link to="/report">
+          <button
+            class="mt-3 mr-2 md:mt-0 bg-green-500 hover:bg-green-600 px-2 py-2 text-white font-semibold rounded-lg shadow-md hover:cursor-pointer transition transform hover:scale-105 flex items-center gap-2"
+          >
+            <Icon name="uil:plus" /> New Report
+          </button>
+        </nuxt-link>
+     </div>
   </div>
 </template>
 

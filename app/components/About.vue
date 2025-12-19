@@ -1,10 +1,11 @@
 <template>
   <section class="relative bg-gradient-to-r from-green-500 to-green-600 text-white py-16 px-6 lg:px-16 overflow-hidden">
     <!-- Decorative shapes -->
-    <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/20 rounded-full blur-3xl animate-pulseSlow"></div>
+    <div class="absolute n
+     -top-10  -right-10 w-40 h-40 bg-white/20 rounded-full blur-3xl animate-pulseSlow"></div>
     <div class="absolute -bottom-10 -left-10 w-60 h-60 bg-white/30 rounded-full blur-3xl animate-pulseSlow delay-300"></div>
 
-    <div class="relative z-10 max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12">
+    <div class="relative  z-10 max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12">
       <!-- Text Content -->
       <div class="lg:w-1/2 text-center lg:text-left animate-fadeInLeft">
         <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-green-200">
