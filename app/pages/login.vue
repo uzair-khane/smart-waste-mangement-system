@@ -42,9 +42,17 @@
       </div>
 
       <!-- Button -->
-      <button type="button" class="w-full flex h-12 items-center justify-center hover:bg-green-500 transition-all my-16 py-2.5 bg-green-600 text-white text-[18px] font-semibold rounded-md">
-        Login
-      </button>
+     <button
+  type="button"
+  @click="login"
+  :disabled="loading"
+  class="w-full flex h-12 items-center justify-center hover:bg-green-500 transition-all my-16 py-2.5 bg-green-600 text-white text-[18px] font-semibold rounded-md"
+>
+  <span v-if="!loading">Login</span>
+  <span v-else>Loading...</span>
+</button>
+
+<p v-if="error" class="text-red-500">{{ error }}</p>
 
       <div>
         <span>don't have an account? <NuxtLink class="text-blue-600" to="/signup">Sign up</NuxtLink></span>
@@ -55,11 +63,56 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useApi } from "../composables/useApi.js";
 
 const email = ref("");
 const password = ref("");
 const showPassword = ref(false);
+const loading = ref(false);
+const error = ref("");
+
+const router = useRouter();
+const { apiFetch, token } = useApi(); 
+
+const login = async () => {
+  loading.value = true;
+  error.value = "";
+
+  if (!email.value || !password.value) {
+    error.value = "All fields are required";
+    loading.value = false;
+    return;
+  }
+
+  try {
+    const res = await apiFetch("/auth/login", {
+      method: "POST",
+      body: {
+        email: email.value,
+        password: password.value,
+      },
+    });
+    console.log(res);
+    
+ 
+  if (res.success) {
+    const token = useCookie('token') 
+    token.value = res.data.token;
+    router.push("/"); 
+  } else {
+    error.value = res.message || "Login failed";
+  }
+} catch (err) {
+  console.log(err);
+  error.value = err?.data?.message || "Login failed";
+}
+
+  
+
+};
 </script>
+
 
 <style scoped>
 .login {

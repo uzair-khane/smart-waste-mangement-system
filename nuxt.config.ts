@@ -3,6 +3,12 @@
 
 import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
+   runtimeConfig: {
+    public: {
+      apiBase:''
+    }
+  },
+  
  compatibilityDate: '2025-07-15',
  devtools: { enabled: true },
   app: {
