@@ -74,6 +74,7 @@
           <!-- Mobile Auth -->
           <div class="md:hidden border-t border-slate-200 mt-2 pt-2">
             <NuxtLink
+            v-if="!token"
               to="/profile"
               class="flex items-center justify-center gap-2 px-4 py-3 text-lg font-medium text-slate-700 hover:text-green-600 transition"
             >
@@ -82,6 +83,7 @@
             </NuxtLink>
 
             <NuxtLink
+            v-if="token"
             to="/login"
               class="flex hover:cursor-pointer items-center justify-center gap-2 px-4 py-3 text-lg font-medium text-green-700 hover:text-green-600 transition"
             >
@@ -98,6 +100,7 @@
 
         <!-- Login -->
         <NuxtLink
+        v-if="!token"
           to="/login"
           class="flex items-center hover:cursor-pointer gap-2 bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-md transition shadow"
         >
@@ -107,6 +110,7 @@
 
         <!-- Profile -->
         <NuxtLink
+         v-if="token"
           to="/profile"
           class="flex items-center gap-2 border border-green-600 hover:bg-green-600 hover:text-white px-5 py-2 rounded-md transition"
         >
@@ -123,5 +127,7 @@
 
 <script setup>
 import { ref } from "vue"
+
+const token = useCookie("token")
 const isOpen = ref(false)
 </script>
