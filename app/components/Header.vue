@@ -5,105 +5,123 @@
     <div
       class="max-w-7xl mx-auto flex justify-between items-center py-3 px-4 md:px-6"
     >
+
       <!-- Logo -->
-      <NuxtLink to="/" class="flex items-center space-x-3 group">
+      <NuxtLink to="/" class="flex items-center gap-3 group">
         <img
           src="/images/logo.png"
           alt="Smart Waste Logo"
-          class="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-110"
+          class="h-16 w-16 md:h-20 md:w-20 object-contain transition-transform duration-300 group-hover:scale-110"
         />
       </NuxtLink>
 
       <!-- Mobile Hamburger -->
       <button
         @click="isOpen = !isOpen"
-        class="md:hidden hover:cursor-pointer focus:outline-none transition-transform duration-300"
+        class="md:hidden hover:cursor-pointer focus:outline-none"
       >
         <Icon
-          v-if="!isOpen"
-          name="material-symbols:menu-rounded"
-          class="text-4xl hover:cursor-pointer text-green-700"
-        />
-        <Icon
-          v-else
-          name="material-symbols:close-rounded"
-          class="text-4xl hover:cursor-pointer text-green-700"
+          :name="isOpen ? 'material-symbols:close-rounded' : 'material-symbols:menu-rounded'"
+          class="text-4xl hover:cursor-pointer text-green-700 transition"
         />
       </button>
 
       <!-- Navigation -->
       <nav
-        class="absolute md:static left-0 top-full w-full md:w-auto bg-white/90 md:bg-transparent overflow-hidden md:overflow-visible shadow-md md:shadow-none transition-all duration-500 ease-in-out"
-        :class="isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 md:opacity-100 md:max-h-full'"
+        class="absolute md:static left-0 top-full w-full md:w-auto bg-white/95 md:bg-transparent overflow-hidden shadow-md md:shadow-none transition-all duration-500 ease-in-out"
+        :class="isOpen
+          ? 'max-h-96 opacity-100'
+          : 'max-h-0 opacity-0 md:opacity-100 md:max-h-full'"
       >
         <div class="flex flex-col md:flex-row md:items-center text-center">
+
+          <!-- Nav Links -->
           <NuxtLink
             to="/"
-            class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+            class="block px-4 py-3 text-lg font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
           >
             Home
           </NuxtLink>
 
           <NuxtLink
             to="/chatBot"
-            class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+            class="block px-4 py-3 text-lg font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
           >
             Chatbot
           </NuxtLink>
 
           <NuxtLink
             to="/report"
-            class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+            class="block px-4 py-3 text-lg font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
           >
             Report Issue
           </NuxtLink>
 
           <NuxtLink
             to="/complaint"
-            class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+            class="block px-4 py-3 text-lg font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
           >
             My Complaints
           </NuxtLink>
 
           <NuxtLink
             to="/contactUs"
-            class="block px-4 py-3 text-lg md:py-0 font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
+            class="block px-4 py-3 text-lg font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
           >
             Contact Us
           </NuxtLink>
 
-          <!-- Profile link inside mobile menu -->
-          <NuxtLink
-            to="/profile"
-            class="block px-4 py-3 text-lg md:hidden font-medium text-slate-700 hover:text-green-600 hover:scale-105 transition-all duration-300"
-          >
-            Profile
-          </NuxtLink>
+          <!-- Mobile Auth -->
+          <div class="md:hidden border-t border-slate-200 mt-2 pt-2">
+            <NuxtLink
+              to="/profile"
+              class="flex items-center justify-center gap-2 px-4 py-3 text-lg font-medium text-slate-700 hover:text-green-600 transition"
+            >
+              <Icon name="uil:user" />
+              Profile
+            </NuxtLink>
+
+            <NuxtLink
+            to="/login"
+              class="flex hover:cursor-pointer items-center justify-center gap-2 px-4 py-3 text-lg font-medium text-green-700 hover:text-green-600 transition"
+            >
+              <Icon name="mdi:account-plus" />
+              Login
+            </NuxtLink>
+          </div>
+
         </div>
       </nav>
 
-      <!-- Desktop Profile Icon -->
-      <NuxtLink
-        to="/profile"
-        class="hidden md:block ml-4"
-      >
-        <Icon
-          name="uil:user"
-          class="text-2xl text-green-700 hover:text-green-500 hover:scale-110 transition-all duration-300 cursor-pointer"
-        />
-      </NuxtLink>
+      <!-- Desktop Actions -->
+      <div class="hidden md:flex items-center gap-3">
+
+        <!-- Login -->
+        <NuxtLink
+          to="/login"
+          class="flex items-center hover:cursor-pointer gap-2 bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-md transition shadow"
+        >
+        <Icon name="mdi:account-plus" size="20" />
+          Login
+        </NuxtLink>
+
+        <!-- Profile -->
+        <NuxtLink
+          to="/profile"
+          class="flex items-center gap-2 border border-green-600 hover:bg-green-600 hover:text-white px-5 py-2 rounded-md transition"
+        >
+        
+          <Icon name="uil:user" />
+          Profile
+        </NuxtLink>
+
+      </div>
+
     </div>
   </header>
 </template>
 
 <script setup>
-import { ref } from "vue";
-
-const isOpen = ref(false);
+import { ref } from "vue"
+const isOpen = ref(false)
 </script>
-
-<style scoped>
-header nav a {
-  transition: all 0.3s ease;
-}
-</style>
