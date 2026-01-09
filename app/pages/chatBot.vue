@@ -142,7 +142,9 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-
+definePageMeta({
+  middleware:"auth"
+})
 const sidebarOpen = ref(false)
 
 const userInput = ref('')

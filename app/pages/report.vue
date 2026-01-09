@@ -116,7 +116,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import Header from '~/components/Header.vue'
-
+  definePageMeta({
+    middleware:'auth',
+   
+  })
 const fullName = ref('')
 const locationAddress = ref('')
 const issueDescription = ref('')

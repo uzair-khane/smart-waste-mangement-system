@@ -31,18 +31,28 @@
         <p class="text-lg sm:text-xl mb-6 text-slate-700">
           Helping citizens report waste or cleanliness issues quickly and efficiently. Together, we can make our city cleaner and healthier!
         </p>
-        <NuxtLink
-          to="/report"
-          class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-all transform hover:scale-105"
+        <button
+          @click="handeLogin()"
+          class="inline-block hover:cursor-pointer bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-all transform hover:scale-105"
         >
           Report an Issue
-        </NuxtLink>
+      </button>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+  const token = useCookie("token");
+  function handeLogin(){
+    if(!token.value){
+       alert("Pleace login first ")
+       navigateTo("login")
+    }
+    else{
+      navigateTo("/report")
+    }
+  }
 </script>
 
 <style scoped>

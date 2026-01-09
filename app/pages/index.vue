@@ -22,12 +22,11 @@
       <p class="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-3xl animate-fadeInUp">
         Easily report waste or cleanliness problems in your city. Track your complaints and help create a cleaner, healthier environment.
       </p>
-      <NuxtLink
-        to="/report"
-        class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-sm sm:text-lg shadow-lg transition-all transform hover:scale-105 animate-fadeInUp delay-200"
+      <button @click="handleLogin()"
+        class="inline-block hover:cursor-pointer bg-green-600 hover:bg-green-700 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-sm sm:text-lg shadow-lg transition-all transform hover:scale-105 animate-fadeInUp delay-200"
       >
         Report Issue
-      </NuxtLink>
+    </button>
     </div>
 
     <!-- Floating Shapes / Decorative Elements -->
@@ -47,6 +46,16 @@
 </template>
 
 <script setup>
+  const token = useCookie("token")
+  function handleLogin(){
+    if(!token.value){
+      alert("Pleace login first ")
+        navigateTo("login")
+    }
+   else{
+      navigateTo("/report")
+   }
+  }
 </script>
 
 <style scoped>

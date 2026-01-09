@@ -100,7 +100,9 @@
 
 <script setup>
 import { ref } from "vue";
-
+ definePageMeta({
+  middleware:'auth'
+ })
 let complaints = ref([
   {
     id: "G-12393",

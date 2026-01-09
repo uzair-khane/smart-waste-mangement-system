@@ -74,7 +74,7 @@
           <!-- Mobile Auth -->
           <div class="md:hidden border-t border-slate-200 mt-2 pt-2">
             <NuxtLink
-            v-if="!token"
+            v-if="token"
               to="/profile"
               class="flex items-center justify-center gap-2 px-4 py-3 text-lg font-medium text-slate-700 hover:text-green-600 transition"
             >
@@ -83,7 +83,7 @@
             </NuxtLink>
 
             <NuxtLink
-            v-if="token"
+            v-if="!token"
             to="/login"
               class="flex hover:cursor-pointer items-center justify-center gap-2 px-4 py-3 text-lg font-medium text-green-700 hover:text-green-600 transition"
             >
