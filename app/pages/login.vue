@@ -116,7 +116,7 @@ const login = async () => {
 
 <style scoped>
 .login {
-  background-image: url("/images/banner.jpg");
+  background-image: url("/images/banner.jpg"); 
   background-size: cover;
   width: 100%;
   height: 100vh;
